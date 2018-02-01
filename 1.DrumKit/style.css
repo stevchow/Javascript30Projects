@@ -1,6 +1,6 @@
 html {
   font-size: 10px;
-  background: whitesmoke url('whitemac.jpg')bottom center;
+  background: whitesmoke url('whitemac.jpg');
   background-size: cover;
   background-position: fixed;
 }
@@ -11,11 +11,15 @@ html {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.margin-top {
+  margin-bottom: 300px;
+}
+
 .keys {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-gap: 10px;
-  min-height: 100vh;
+  /* min-height: 70vh; */
   align-content: center;
   justify-content: center;
   margin: 20px;
@@ -38,7 +42,7 @@ html {
 .playing {
   transform: scale(1.45);
   border-color: #ffeead;
-  box-shadow: 0 0 1rem #ffc600;
+  box-shadow: 0 0 1rem #ffeead;
 }
 
 kbd {
@@ -61,14 +65,20 @@ kbd {
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .keys {
     grid-template-columns: 1fr 1fr;
+  }
+  .margin-top {
+    margin-bottom: 0;
   }
 }
 
 @media (max-width: 600px) {
   .keys {
     grid-template-columns: 1fr;
+  }
+  .margin-top {
+    margin-bottom: 0;
   }
 }
