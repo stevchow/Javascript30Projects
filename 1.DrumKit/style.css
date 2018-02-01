@@ -2,6 +2,7 @@ html {
   font-size: 10px;
   background: whitesmoke url('whitemac.jpg')bottom center;
   background-size: cover;
+  background-position: fixed;
 }
 body,
 html {
@@ -17,38 +18,41 @@ html {
   min-height: 100vh;
   align-content: center;
   justify-content: center;
-  margin: 10px;
+  margin: 20px;
 }
 
 .key {
-  border: 0.4rem solid rgb(255, 251, 251);
+  border: 0.05rem solid rgba(0, 0, 0, 0.541);
   border-radius: 0.5rem;
   margin: 0;
   font-size: 1.5rem;
   padding: 1rem 0.5rem;
-  transition: all 0.07s ease;
+  transition: all 0.09s ease;
   text-align: center;
   color: white;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(56, 52, 52, 0.582);
   text-shadow: 0 0 0.5rem black;
+  transform: skewX(175deg);
 }
 
 .playing {
-  transform: scale(1.1);
-  border-color: #ffc600;
+  transform: scale(1.45);
+  border-color: #ffeead;
   box-shadow: 0 0 1rem #ffc600;
 }
 
 kbd {
+  font-family: Times, serif;
   display: block;
   font-size: 4rem;
+  text-transform: lowercase;
 }
 
 .sound {
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  color: #ffc600;
+  color: #ffeead;
 }
 
 @media (max-width: 1000px) {
