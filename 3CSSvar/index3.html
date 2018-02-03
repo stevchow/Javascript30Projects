@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Scoped CSS Variables and JS</title>
+  <title>CSS Variables and JS</title>
 </head>
 
 <body>
@@ -67,11 +67,13 @@
     const inputs = document.querySelectorAll('.controls input');
 
     function changesValue() {
+      // accessing data-key
       const suffix = this.dataset.sizing || '';
-
+      // setting base style in document, can be overwritten
       document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
     }
 
+    // listen to the change and moving mouse event
     inputs.forEach(input => input.addEventListener('change', changesValue));
     inputs.forEach(input => input.addEventListener('mousemove', changesValue));
 
