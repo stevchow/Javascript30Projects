@@ -56,23 +56,27 @@
 
 
     .panel1 {
-      background-image: url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500);
+      background-image: url(https://source.unsplash.com/random/1200x1200);
     }
 
     .panel2 {
-      background-image: url(https://source.unsplash.com/rFKUFzjPYiQ/1500x1500);
+      background-image: url(https://source.unsplash.com/random/1300x1300);
     }
 
     .panel3 {
-      background-image: url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d);
+      background-image: url(https://source.unsplash.com/random/1500x1500);
     }
 
     .panel4 {
-      background-image: url(https://source.unsplash.com/ITjiVXcwVng/1500x1500);
+      background-image: url(https://source.unsplash.com/random/1400x1400);
     }
 
     .panel5 {
-      background-image: url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500);
+      background-image: url(https://source.unsplash.com/random/1600x1600);
+    }
+
+    .panel6 {
+      background-image: url(https://source.unsplash.com/random/1700x1700);
     }
 
     /* flex items */
@@ -81,9 +85,47 @@
       margin: 0;
       width: 100%;
       transition: transform 0.5s;
-      border: 1px solid red;
-
+      /* border: 1px solid red; */
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
+
+    .panel>*:first-child {
+      transform: translateY(-100%);
+    }
+
+    .panel.open-active>*:first-child {
+      transform: translateY(0);
+    }
+
+    .panel>*:last-child {
+      transform: translateY(100%);
+    }
+
+    .panel.open-active>*:last-child {
+      transform: translateY(0);
+    }
+
+    /* panel6 */
+
+    .panel6>*:first-child {
+      transform: translateX(-100%);
+    }
+
+    .panel6.open-active>*:first-child {
+      transform: translateX(0);
+    }
+
+    .panel6>*:last-child {
+      transform: translateX(100%);
+    }
+
+    .panel6.open-active>*:last-child {
+      transform: translateX(0);
+    }
+
 
     .panel p {
       text-transform: uppercase;
@@ -97,10 +139,17 @@
     }
 
     .panel.open {
+      flex: 5;
       font-size: 40px;
     }
   </style>
 
+  <div class="panel panel6">
+    <p>Have a</p>
+    <p>Chill</p>
+    <p>😁</p>
+    <p>Day</p>
+  </div>
 
   <div class="panels">
     <div class="panel panel1">
@@ -131,7 +180,21 @@
   </div>
 
   <script>
+    const panels = document.querySelectorAll('.panel');
 
+    var toggleOpen = function () {
+      this.classList.toggle('open');
+    }
+
+    var toggleActive = function (e) {
+      console.log(e.propertyName);
+      if (e.propertyName.includes('flex')) {
+        this.classList.toggle('open-active');
+      }
+    }
+
+    panels.forEach(panel => panel.addEventListener('click', toggleOpen))
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive))
   </script>
 
 
