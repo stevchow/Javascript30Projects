@@ -17,9 +17,50 @@
     </ul>
   </form>
   <script>
+
+
     const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
-    const cit
+    const cities = [];
+
+    fetch(endpoint)
+      .then(axcvee => axcvee.json()) //axcvee or what ever name you want as a premise or something that return from fetch()
+      .then(whateveryouwant => cities.push(...whateveryouwant)); //take return data from axcvee.json() and name it 'whateveryouwant' then push it to const cities array with 'spread', so the things you push are into the existing array, not creating new index in that array.. try in the console, cities.push(1,2,3) with 'spread' and without 'spread'
+
+    const findMatches = function (wordToMatch, cities) {
+      return cities.filter(place => {
+        const regexp = new RegExp(wordToMatch, 'gi');// global and insensitive
+        return place.city.match(regexp) || place.state.match(regexp); //city and state are object name/value pair in JSON
+      })
+    }
+
+    const numberWithCommas = (x) => {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+    
+    const displayMatches = function () {
+      const matchArr = findMatches(this.value, cities);
+      const html = matchArr.map(abcdef => {
+         const regex = new RegExp(this.value, 'gi');
+         const cityName = abcdef.city.replace(regex, `<span class="hl">${this.value}</span>`);
+         const stateName = abcdef.state.replace(regex, `<span class="hl">${this.value}</span>`);
+        return `
+          <li>
+            <span class="name">${cityName}, ${stateName}</span>
+            <span class="population">${numberWithCommas(abcdef.population)}</span>
+          </li>
+        `
+      }).join('');
+      suggestions.innerHTML = html;
+    }
+
+    const search = document.querySelector('.search');
+    const suggestions = document.querySelector('.suggestions');
+
+    search.addEventListener('change', displayMatches);
+    search.addEventListener('keyup', displayMatches);
+
+
 
   </script>
 </body>
