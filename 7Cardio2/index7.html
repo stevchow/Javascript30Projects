@@ -93,7 +93,7 @@
     ];
 
     console.table(comments);
-    console.table(newComments); //copying comments not by reference but by memory
+    console.table(newComments); //copying comments not by reference but by memory, because array is an object, and usually objects are by reference. By using 'spread', we copying new arr in new memory space.
 
   </script>
 </body>
