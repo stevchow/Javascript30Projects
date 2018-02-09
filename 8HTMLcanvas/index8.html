@@ -7,11 +7,13 @@
 </head>
 
 <body>
-  <canvas class="draw1" width="1200" height="400" placeholder="as"></canvas>
-  <button style="border: 1px solid #BADA55; background-image:linear-gradient(to right,#bada55, #f06d06);float:left" 
+  <div class="text" style="background-color:coral">click and hold your mouse</div>
+  <canvas class="draw1" width="1200" height="400"></canvas>
+  <button style="padding:11px; border: 1px solid #BADA55; background-image:linear-gradient(to right,#bada55, #f06d06);float:left" 
   onclick="clearPage()">Clear ✖</button>
 
   <hr>
+  <div class="text" style="background-color:cornflowerblue">highlight this canvas</div>
   <canvas class="draw2" width="1200" height="400"></canvas>
   <script>
     function clearPage() {
@@ -135,6 +137,8 @@
     html,
     body {
       margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color:azure;
     }
   </style>
 
