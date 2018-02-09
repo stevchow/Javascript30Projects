@@ -1,19 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>HTML5 Canvas</title>
 </head>
-<body>
-<canvas id="draw" width="800" height="800"></canvas>
-<script>
-</script>
 
-<style>
-  html, body {
-    margin:0;
-  }
-</style>
+<body>
+  <canvas class="draw1" width="1200" height="400" placeholder="as"></canvas>
+  <button style="border: 1px solid #BADA55; background-image:linear-gradient(to right,#bada55, #f06d06);float:left" 
+  onclick="clearPage()">Clear ✖</button>
+
+  <hr>
+  <canvas class="draw2" width="1200" height="400"></canvas>
+  <script>
+    function clearPage() {
+      window.location.reload(true);
+    }
+    const canvas = document.querySelector('.draw1');
+    const canvas2 = document.querySelector('.draw2');
+    const ctx = canvas.getContext('2d');
+    const ctx2 = canvas2.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas2.width = window.innerWidth;
+    canvas.height = window.innerHeight / 2;
+    canvas2.height = window.innerHeight / 2;
+
+
+    // canvas draw1
+    ctx.strokeStyle = '#BADA55';
+    ctx.lineJoin = 'round'; //end of the line will rounded
+    ctx.lineCap = 'round';
+    ctx.lineWidth = 50;
+    ctx.globalCompositeOperation = "destination-atop";
+
+
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+    let hue = 0;
+    let direction = true;
+
+    function draw(e) {
+      if (!isDrawing) return; //stop function by return it at top
+      ctx.strokeStyle = `hsl(${hue},100%,70%)`;
+      ctx.beginPath();
+      //start from
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(e.offsetX, e.offsetY); // go to here
+      ctx.stroke();
+      // lastX = e.offsetX;
+      // lastY = e.offsetY;
+      [lastX, lastY] = [e.offsetX, e.offsetY];
+      hue++;
+
+      if (hue >= 360) {
+        hue = 0;
+      }
+      if (ctx.lineWidth >= 90 || ctx.lineWidth <= 1) {
+        direction = !direction;
+      }
+      if (direction) {
+        ctx.lineWidth++;
+      } else {
+        ctx.lineWidth--;
+      }
+    }
+    canvas.addEventListener('mousedown', (e) => {
+      isDrawing = true;
+      [lastX, lastY] = [e.offsetX, e.offsetY];
+    });
+
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mouseout', () => isDrawing = false);
+
+
+
+    // canvas 2
+    ctx2.strokeStyle = '#BADA55';
+    ctx2.lineJoin = 'round'; //end of the line will rounded
+    ctx2.lineCap = 'round';
+    ctx2.lineWidth = 50;
+    ctx2.globalCompositeOperation = "color";
+
+
+    let isDrawing2 = false;
+    let lastX2 = 0;
+    let lastY2 = 0;
+    let hue2 = 0;
+    let direction2 = true;
+
+    function draw2(e) {
+      if (!isDrawing2) return; //stop function by return it at top
+      ctx2.strokeStyle = `hsl(${hue2},100%,70%)`;
+      ctx2.beginPath();
+      //start from
+      ctx2.moveTo(lastX2, lastY2);
+      ctx2.lineTo(e.offsetX, e.offsetY); // go to here
+      ctx2.stroke();
+      // lastX = e.offsetX;
+      // lastY = e.offsetY;
+      [lastX2, lastY2] = [e.offsetX, e.offsetY];
+      hue2++;
+
+      if (hue2 >= 360) {
+        hue2 = 0;
+      }
+      if (ctx2.lineWidth >= 90 || ctx2.lineWidth <= 1) {
+        direction2 = !direction2;
+      }
+      if (direction2) {
+        ctx2.lineWidth++;
+      } else {
+        ctx2.lineWidth--;
+      }
+    }
+    canvas2.addEventListener('mousedown', (e) => {
+      isDrawing2 = true;
+      [lastX2, lastY2] = [e.offsetX, e.offsetY];
+    });
+
+    canvas2.addEventListener('mousemove', draw2);
+    canvas2.addEventListener('mouseup', () => isDrawing2 = false);
+    canvas2.addEventListener('mouseout', () => isDrawing2 = false);
+
+
+
+
+  </script>
+
+  <style>
+    html,
+    body {
+      margin: 0;
+    }
+  </style>
 
 </body>
+
 </html>
