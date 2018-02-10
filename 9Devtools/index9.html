@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Console Tricks!</title>
 </head>
+
 <body>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+  <p onClick="makeGreen()">Click me 🤑 All things here happens in developer console.</p>
+  <p>Open you chrome devtools by right click and 'inspect'</p>
+  <p>1. Curious about what Javascript code that run behind one or some HTML element? inspect those element in chrome dev tools.
+    Then in 'elements' tab right click that element and select "break on" -> then select "attribute modifications"-> then
+    trigger that element again to see the changes in dev tools, you can disable it by the same steps.</p>
+
+  <p>2. console.log('hello world!'); *see console tab in devtools</p>
+  <p>3. Use '%s' as variable like in console ---> console.log('hello I\'am a %s, we\'ll rock you', '👨‍🎤'); or use backticks feature from ES6 like this `'hello I\'am a ${variableHere}, we\'ll rock you'` </p>
+  <p>4. Use '%c' in front of console text you want to style, to applying CSS on console</p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
 
   <script>
     const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
@@ -18,10 +34,14 @@
     }
 
     // Regular
+    console.log('hello world!');
 
     // Interpolated
+    console.log('hello I\'am a %s, we\'ll rock you', '👨‍🎤');
+    // or you can you backticks in ES6 `'hello I\'am a ${variableHere}, we\'ll rock you'`
 
     // Styled
+    console.log('Hello %c there! Thank for opening console.', 'font-size:30px;');
 
     // warning!
 
@@ -43,4 +63,5 @@
 
   </script>
 </body>
+
 </html>
