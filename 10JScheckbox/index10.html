@@ -1,4 +1,4 @@
-gi<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -33,7 +33,7 @@ gi<!DOCTYPE html>
 
     input:checked + p {
       background:#F9F9F9;
-      text-decoration: line-through;
+      text-decoration:line-through ;
     }
 
     input[type="checkbox"] {
@@ -43,7 +43,7 @@ gi<!DOCTYPE html>
     p {
       margin:0;
       padding:20px;
-      transition:background 0.2s;
+      transition:background 0.4s;
       flex:1;
       font-family:'helvetica neue';
       font-size: 20px;
@@ -99,6 +99,21 @@ gi<!DOCTYPE html>
   </div>
 
 <script>
+const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+
+let lastChecked;
+
+function handleCheck(e) {
+  
+
+
+  lastChecked = this;
+}
+
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('click', handleCheck)
+});
+
 </script>
 </body>
 </html>
