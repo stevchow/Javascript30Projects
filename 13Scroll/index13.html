@@ -58,6 +58,22 @@
       };
     }
 
+
+    const sliderImages = document.querySelectorAll('.slide-in');
+
+    function checkSlide(e) {
+      // console.log(window.scrollY);
+      //console.count(e); //too many event to listen, we need to debounce it
+      // now use window.scrollY to determine at what point we will show the images
+
+      sliderImages.forEach(sliderImage => {
+        //halfway through the image
+        const slideInAt = (window.scrollY + window.innerHeight) - 
+      });
+    }
+
+    window.addEventListener('scroll', debounce(checkSlide)); // use debounce here, so the function only run every 20ms , not every time we scrolling.
+
   </script>
 
   <style>
