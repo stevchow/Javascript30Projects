@@ -36,17 +36,22 @@
     age = 200;
     console.log(age, age2);
 
-    let name ='brick';
+    let name = 'brick';
     let name2 = 'prosma';
     console.log(name, name2);
     name = "sdouarm";
     console.log(name, name2);
+
+    console.log('----------------------------------------');
+
 
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
     const team = players;
+
+    console.log('----------------------------------------');
 
 
     // however what happens when we update that array?
@@ -57,13 +62,16 @@
     console.log(team);
     console.log(players); //BOOM , we change the players too, because array work by reference not copying as new memory.
 
+    console.log('----------------------------------------');
+
     // So, how do we fix this? We take a copy instead!
     // one way use .slice() without param for make new copy 
-    const team3 = players.slice() 
+    const team3 = players.slice()
     team3[1] = 'puouyloa';
     console.log(team3);
     console.log(players); // See? 
 
+    console.log('----------------------------------------');
 
 
     // or create a new array and concat the old one in
@@ -73,6 +81,7 @@
     console.log(players); // See? 
 
 
+    console.log('----------------------------------------');
 
     // or use the new ES6 
     const team5 = [...players];
@@ -80,10 +89,18 @@
     console.log(team5);
     console.log(players); // See? 
 
+    console.log('----------------------------------------');
+
+    // or using Array.from();
+    const team6 = Array.from(players);
+    team6[0] = "kucjasizx";
+    console.log(team6);
+    console.log(players);
+
 
     // now when we update it, the original one isn't changed
-
     // The same thing goes for objects, let's say we have a person object
+    console.log('----------------------------------------');
 
     // with Objects
     const person = {
@@ -92,13 +109,27 @@
     };
 
     // and think we make a copy:
+    const captain = person;
+    captain.name = 'yozcouso';
+    console.log(captain);
+    console.log(person); // BOOM , it change the person too. This is called by reference , same memory spot. not creating new one.
+
+    console.log('----------------------------------------');
 
     // how do we take a copy instead?
+    const captain2 = Object.assign({}, person, { number: 99, age: 20 });
+    console.log(captain2);
+    console.log(person); // still the same 
 
     // We will hopefully soon see the object ...spread
 
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    console.log('----------------------------------------');
 
+
+    const stev = {
+      name
+    }
   </script>
 
 </body>
