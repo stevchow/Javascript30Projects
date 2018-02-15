@@ -128,8 +128,16 @@
 
 
     const stev = {
-      name
+      name : 'stevchow',
+      age: 21,
+      social : {
+        twitter: '@aa',
+        facebook: 'stevchow'
+      }
     }
+
+    const dev = Object.assign({}, stev);
+    const dev2 = JSON.parse(JSON.stringify(stev));
   </script>
 
 </body>
