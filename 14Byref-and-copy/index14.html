@@ -14,22 +14,7 @@
     <pre>
     By memory or copying
     // start with strings, numbers and booleans
-    let age = 100;
-    let age2 = age;
-    console.log(age,age2); // 100 200
-    age = 200;
-    console.log(age,age2); // 200 100
-
-    let name ='brick';
-    let name2 = 'prosma';
-    console.log(name, name2);
-    name = "sdouarm";
-    console.log(name, name2);
-    </pre>
-
-  </div>
-  <script>
-    // start with strings, numbers and booleans
+    //1.
     let age = 100;
     let age2 = age;
     console.log(age, age2);
@@ -42,18 +27,18 @@
     name = "sdouarm";
     console.log(name, name2);
 
-    console.log('----------------------------------------');
+    console.log('-----------------2-----------------------');
 
-
+    //2.
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
     const team = players;
 
-    console.log('----------------------------------------');
+    console.log('------------------3----------------------');
 
-
+    //3.
     // however what happens when we update that array?
     // now here is the problem!
     // oh no - we have edited the original array too!
@@ -62,8 +47,9 @@
     console.log(team);
     console.log(players); //BOOM , we change the players too, because array work by reference not copying as new memory.
 
-    console.log('----------------------------------------');
+    console.log('------------------4----------------------');
 
+    //4.
     // So, how do we fix this? We take a copy instead!
     // one way use .slice() without param for make new copy 
     const team3 = players.slice()
@@ -71,9 +57,9 @@
     console.log(team3);
     console.log(players); // See? 
 
-    console.log('----------------------------------------');
+    console.log('-------------------5---------------------');
 
-
+    //5.
     // or create a new array and concat the old one in
     const team4 = [].concat(players);
     team4[0] = 'stev';
@@ -81,16 +67,18 @@
     console.log(players); // See? 
 
 
-    console.log('----------------------------------------');
-
+    console.log('------------------6----------------------');
+    
+    //6.
     // or use the new ES6 
     const team5 = [...players];
     team5[1] = 'asudsva';
     console.log(team5);
     console.log(players); // See? 
 
-    console.log('----------------------------------------');
+    console.log('-----------------7-----------------------');
 
+    //7.
     // or using Array.from();
     const team6 = Array.from(players);
     team6[0] = "kucjasizx";
@@ -100,8 +88,9 @@
 
     // now when we update it, the original one isn't changed
     // The same thing goes for objects, let's say we have a person object
-    console.log('----------------------------------------');
+    console.log('--------------------8--------------------');
 
+    //8.
     // with Objects
     const person = {
       name: 'Wes Bos',
@@ -114,19 +103,19 @@
     console.log(captain);
     console.log(person); // BOOM , it change the person too. This is called by reference , same memory spot. not creating new one.
 
-    console.log('----------------------------------------');
+    console.log('------------------9----------------------');
 
+    //9.
     // how do we take a copy instead?
     const captain2 = Object.assign({}, person, { number: 99, age: 20 });
     console.log(captain2);
     console.log(person); // still the same 
 
     // We will hopefully soon see the object ...spread
-
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
-    console.log('----------------------------------------');
+    console.log('------------------10----------------------');
 
-
+    //10.
     const stev = {
       name : 'stevchow',
       age: 21,
@@ -135,8 +124,138 @@
         facebook: 'stevchow'
       }
     }
+    
 
     const dev = Object.assign({}, stev);
+    //we can change only first level by memory, if we change level 2, both will have same value and became by reference.
+    dev.name = 'bomberman'; // only change object dev , not stev
+    dev.social.twitter = "@yomaaaan"; //change by reference stev and dev object
+
+    //dirty trick for access all level deep of object by using JSON.
+    const dev2 = JSON.parse(JSON.stringify(stev));
+    </pre>
+
+  </div>
+  <script>
+    // start with strings, numbers and booleans
+    //1.
+    let age = 100;
+    let age2 = age;
+    console.log(age, age2);
+    age = 200;
+    console.log(age, age2);
+
+    let name = 'brick';
+    let name2 = 'prosma';
+    console.log(name, name2);
+    name = "sdouarm";
+    console.log(name, name2);
+
+    console.log('-----------------2-----------------------');
+
+    //2.
+    // Let's say we have an array
+    const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+
+    // and we want to make a copy of it.
+    const team = players;
+
+    console.log('------------------3----------------------');
+
+    //3.
+    // however what happens when we update that array?
+    // now here is the problem!
+    // oh no - we have edited the original array too!
+    // Why? It's because that is an array reference, not an array copy. They both point to the same array!
+    team[3] = 'Gomuvo';
+    console.log(team);
+    console.log(players); //BOOM , we change the players too, because array work by reference not copying as new memory.
+
+    console.log('------------------4----------------------');
+
+    //4.
+    // So, how do we fix this? We take a copy instead!
+    // one way use .slice() without param for make new copy 
+    const team3 = players.slice()
+    team3[1] = 'puouyloa';
+    console.log(team3);
+    console.log(players); // See? 
+
+    console.log('-------------------5---------------------');
+
+    //5.
+    // or create a new array and concat the old one in
+    const team4 = [].concat(players);
+    team4[0] = 'stev';
+    console.log(team4);
+    console.log(players); // See? 
+
+
+    console.log('------------------6----------------------');
+
+    //6.
+    // or use the new ES6 
+    const team5 = [...players];
+    team5[1] = 'asudsva';
+    console.log(team5);
+    console.log(players); // See? 
+
+    console.log('-----------------7-----------------------');
+
+    //7.
+    // or using Array.from();
+    const team6 = Array.from(players);
+    team6[0] = "kucjasizx";
+    console.log(team6);
+    console.log(players);
+
+
+    // now when we update it, the original one isn't changed
+    // The same thing goes for objects, let's say we have a person object
+    console.log('--------------------8--------------------');
+
+    //8.
+    // with Objects
+    const person = {
+      name: 'Wes Bos',
+      age: 80
+    };
+
+    // and think we make a copy:
+    const captain = person;
+    captain.name = 'yozcouso';
+    console.log(captain);
+    console.log(person); // BOOM , it change the person too. This is called by reference , same memory spot. not creating new one.
+
+    console.log('------------------9----------------------');
+
+    //9.
+    // how do we take a copy instead?
+    const captain2 = Object.assign({}, person, { number: 99, age: 20 });
+    console.log(captain2);
+    console.log(person); // still the same 
+
+    // We will hopefully soon see the object ...spread
+    // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    console.log('------------------10----------------------');
+
+    //10.
+    const stev = {
+      name: 'stevchow',
+      age: 21,
+      social: {
+        twitter: '@aa',
+        facebook: 'stevchow'
+      }
+    }
+
+
+    const dev = Object.assign({}, stev);
+    //we can change only first level by memory, if we change level 2, both will have same value and became by reference.
+    dev.name = 'bomberman'; // only change object dev , not stev
+    dev.social.twitter = "@yomaaaan"; //change by reference stev and dev object
+
+    //dirty trick for access all level deep of object by using JSON.
     const dev2 = JSON.parse(JSON.stringify(stev));
   </script>
 
