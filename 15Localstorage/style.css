@@ -1,7 +1,7 @@
 
     html {
       box-sizing: border-box;
-      background:url('http://wes.io/hx9M/oh-la-la.jpg') center no-repeat;
+      background:url('res.jpg') center no-repeat;
       background-size:cover;
       min-height:100vh;
       display:flex;
@@ -13,9 +13,9 @@
     *, *:before, *:after {box-sizing: inherit; }
 
     svg {
-      fill:white;
-      background: rgba(0,0,0,0.1);
-      padding: 20px;
+      fill:rgba(255, 255, 255, 0.966);
+      background: rgba(246, 37, 37, 0.308);
+      padding:10px;
       border-radius: 50%;
       width:200px;
       margin-bottom: 50px;
