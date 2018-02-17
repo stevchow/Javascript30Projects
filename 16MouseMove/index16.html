@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse Shadow</title>
+</head>
+<body>
+
+  <div class="hero">
+    <h1 contenteditable>🔨RAGNAROK!</h1>
+  </div>
+
+  <style>
+  html {
+    color:black;
+    font-family: sans-serif;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:black;
+  }
+
+  h1 {
+    text-shadow: 10px 10px 0 rgba(0,0,0,1);
+    font-size: 70px;
+  }
+  </style>
+
+<script>
+  const hero = document.querySelector('.hero');
+  const text = document.querySelector('h1');
+
+  function textShadow(e) {
+    //can not work
+    // let x = e.offsetX;
+    // let y = e.offsetY;
+
+    // text.style.textShadow = `
+    // ${x}px ${y}px 0 rgba(0,0,255,0.6)
+    // `
+
+    //work
+
+    //offsetWidth and offsetHeight is the width and the height of the element itself
+    
+    //using destructuring, the format--> yourObjectMethod: yourVarNameforyourObjectMethod
+    const {offsetWidth: width, offsetHeight: height} = hero;
+    let {offsetX: x, offsetY: y} = e;
+    const walk = 100;
+
+    //when using code above that doesn't work, we saw that when we move the mouse over h1 element it will crash and reset the shadow, that because it show the offset of the current target, that is h1 and not hero anymore. Fix it with adding offsetWidth and Height
+
+    //this = hero, but e.target can change to h1
+
+    //offsetTop is range between element to topest window not nearest element or its parent, same way it offsetLeft
+    if(this !== e.target){
+      //to keep sum-ing x and y from left to right and top to bottom
+      x = x + e.target.offsetLeft; 
+      y = y + e.target.offsetTop;
+    }
+    
+    //if you run below code , it will show up with right move ment, but we want to limit it. We can create new variable
+    // text.style.textShadow = `
+    // ${x}px ${y}px 0 rgba(0,0,255,0.6)
+    // `
+
+    
+
+
+
+
+
+
+
+    console.log(x,y);
+  }
+
+  hero.addEventListener('mousemove', textShadow);
+
+</script>
+</body>
+</html>
