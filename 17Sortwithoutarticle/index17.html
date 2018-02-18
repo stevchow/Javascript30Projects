@@ -10,7 +10,7 @@
     body {
       margin: 0;
       font-family: sans-serif;
-      background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
+      background: url("https://source.unsplash.com/random/800x800");
       background-size: cover;
       display: flex;
       align-items: center;
@@ -44,8 +44,21 @@
   <ul id="bands"></ul>
 
 <script>
-const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper','The Game of Thrones', 'The Stranger Things', 'A Skylit Drive','Lord of the rings', 'Anywhere But Here', 'An Old Dog'];
 
+//create strip to remove a, the, an, so it can be sorted equally
+//replace them and then trim the leftover whitespace
+//^(a |the |an ) means every word with those word as their front letter, replace them with nothing and then trim the whitespace
+// ^ === means start with
+const strip = (arr) => arr.replace(/^(a |the |an )/i, '').trim();
+
+const sortedBands = (inputArr) => inputArr.sort((a,b) => strip(a) > strip(b) ? 1 : -1);
+
+document.querySelector('#bands').innerHTML = sortedBands(bands).map(a => `<li>${a}</li>`).join('');   
+
+
+console.table(sortedBands(bands));
+//see? the bled in index number two based on 'B' not 'The'
 
 </script>
 
