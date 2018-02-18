@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Sort Without Articles</title>
 </head>
+
 <body>
 
   <style>
@@ -18,18 +20,20 @@
     }
 
     #bands {
-      list-style: inside square;
+      list-style: upper-alpha;
       font-size: 20px;
-      background: white;
-      width: 500px;
+      background: rgba(228, 190, 159, 0.5);
+      width: 50vw;
       margin: auto;
       padding: 0;
-      box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 0 0 50px rgba(0, 0, 0, 0.05);
     }
+
     #bands li {
       border-bottom: 1px solid #efefef;
       padding: 20px;
     }
+
     #bands li:last-child {
       border-bottom: 0;
     }
@@ -38,29 +42,29 @@
       color: #ffc600;
       text-decoration: none;
     }
-
   </style>
 
   <ul id="bands"></ul>
 
-<script>
-const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper','The Game of Thrones', 'The Stranger Things', 'A Skylit Drive','Lord of the rings', 'Anywhere But Here', 'An Old Dog'];
+  <script>
+    const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'The Game of Thrones', 'The Stranger Things', 'A Skylit Drive', 'Lord of the rings', 'Anywhere But Here', 'An Old Dog'];
 
-//create strip to remove a, the, an, so it can be sorted equally
-//replace them and then trim the leftover whitespace
-//^(a |the |an ) means every word with those word as their front letter, replace them with nothing and then trim the whitespace
-// ^ === means start with
-const strip = (arr) => arr.replace(/^(a |the |an )/i, '').trim();
+    //create strip to remove a, the, an, so it can be sorted equally
+    //replace them and then trim the leftover whitespace
+    //^(a |the |an ) means every word with those word as their front letter, replace them with nothing and then trim the whitespace
+    // ^ === means start with
+    const strip = (arr) => arr.replace(/^(a |the |an )/i, '').trim();
 
-const sortedBands = (inputArr) => inputArr.sort((a,b) => strip(a) > strip(b) ? 1 : -1);
+    const sortedBands = (inputArr) => inputArr.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
 
-document.querySelector('#bands').innerHTML = sortedBands(bands).map(a => `<li>${a}</li>`).join('');   
+    document.querySelector('#bands').innerHTML = sortedBands(bands).map(a => `<li>${a}</li>`).join('');
 
 
-console.table(sortedBands(bands));
+    console.table(sortedBands(bands));
 //see? the bled in index number two based on 'B' not 'The'
 
-</script>
+  </script>
 
 </body>
+
 </html>
