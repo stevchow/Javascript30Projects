@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- 
+.------..------..------..------..------..------..------..------.
+|S.--. ||T.--. ||E.--. ||V.--. ||C.--. ||H.--. ||O.--. ||W.--. |
+| :/\: || :/\: || (\/) || :(): || :/\: || :/\: || :/\: || :/\: |
+| :\/: || (__) || :\/: || ()() || :\/: || (__) || :\/: || :\/: |
+| '--'S|| '--'T|| '--'E|| '--'V|| '--'C|| '--'H|| '--'O|| '--'W|
+`------'`------'`------'`------'`------'`------'`------'`------'
+|                      stevchow.github.io                      |
+'--------------------------------------------------------------'
+   -->
+
 <head>
   <meta charset="UTF-8">
   <title>Videos</title>
 </head>
-<body>
+
+<body style="background-color: #2f294c3d">
+  <h1 style="font-family: Interface, Avenir Next, sans-serif; color:#29384c;">Try to inspect element to see data-time attribute and open console to see summary of all data-time attribute</h1>
   <ul class="videos">
     <li data-time="5:43">
       Video 1
@@ -171,17 +184,37 @@
     <li data-time="6:03">
       Video 55
     </li>
-    <li data-time="12:39">
+    <li data-time="12:42">
       Video 56
     </li>
     <li data-time="1:56">
       Video 57
     </li>
-    <li data-time="4:04">
+    <li data-time="4:59">
       Video 58
     </li>
   </ul>
-<script>
-</script>
+  <script>
+    const dataTime = [...document.querySelectorAll('[data-time]')];
+
+    const seconds = dataTime
+      .map(a => a.dataset.time)
+      .map(timeDigit => {
+        const [mins, secs] = timeDigit.split(':').map(parseFloat);// applying parseFloat for every elements in array
+        //console.log(mins, secs); destructuring on each index;
+        return (mins * 60) + secs;
+      })
+      .reduce((a, b) => a + b); //sum all seconds
+
+    //seconds === 17938 
+    let hours = Math.floor(seconds / 3600); // Math.floor round 17938/3600  became 4*3600
+    let secondsLeft = seconds % 3600; // result: 3538, but why use mod % ? because 3538 + (4*3600) === seconds. 
+
+    let mins = Math.floor(secondsLeft / 60); //  became 3538/60 === 58;
+    secondsLeft = secondsLeft % 60;// work perfect with Math.floor()
+    
+    console.log(`${hours} hours ${mins} minutes ${secondsLeft} seconds duration for all video`); //you can try to change data-time
+  </script>
 </body>
+
 </html>
