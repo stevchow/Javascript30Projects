@@ -7,7 +7,8 @@ html {
 }
 
 html {
-  font-size: 10px;
+  font-size: 1.2em;
+  font-family: 'Avenir Next';
   background:#252e49e8;
 }
 
@@ -23,6 +24,28 @@ html {
   content: '';
   display: block;
   clear: both;
+}
+
+.controls{
+  margin: 20px;
+}
+
+button {
+  border-style: none;
+  background-color: #252e49e8;
+  color: whitesmoke;
+  padding: 20px;
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 25px;
+  box-shadow: 0 9px 20px #999;
+}
+
+button:active {
+  background-color: #1d2338e8;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 .photo {
