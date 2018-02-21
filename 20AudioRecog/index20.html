@@ -1,19 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Speech Detection</title>
+  <title>Try : What Time Is It? 🎤</title>
 </head>
-<body>
 
+<body>
+  <p style="text-align:center; font-size:5.2rem;">Say Hello! 😄
+  </p>
+  <p style="text-align:center; font-size:1.2rem;">(sstt.. if not working check your micrphone permission or upgrade your browser (e.g Chrome))</p>
   <div class="words" contenteditable>
   </div>
 
-<script>
-  window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  <script>
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const recognition = new SpeechRecognition();
+    //as you are speaking , you going to see what you are saying by setting interimResults
+    recognition.interimResults = true;
+
+    //creating p element inside words div and going to create new p after silence for some seconds
+    //use p coz we want to modify it later
+    let p = document.createElement('p');
+    const words = document.querySelector('.words');
+    words.appendChild(p);
+
+    recognition.addEventListener('result', e => {
+      // console.log(e.results);
+      const transcript = Array.from(e.results)
+        .map(a => a[0])
+        .map(words => words.transcript)
+        .join('');
+
+      p.textContent = transcript;
+      //how to debug overwriting issue when continue talking after a break?look inside event->result->and boolean of isFinal, if its true, create new p.
+      if (e.results[0].isFinal) {
+        //modify p to create new paragraph
+        p = document.createElement('p');
+        words.appendChild(p);
+      }
+
+      if (transcript.includes('dogs')) {
+        console.log('🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶');
+      }
+
+      if (transcript.includes('what time is it')) {
+        const d = new Date();
+        let time = '';
+        d.getHours() > 12 ? time = 'PM' : 'AM';
+        const whatTime = `Now is -> ${Math.floor(d.getHours() / 2.1)} : ${d.getMinutes()} : ${d.getSeconds()} ${time}`;
+        console.log(whatTime);
+        p.textContent = whatTime;
+        words.appendChild(p);
+      }
+
+      console.log(transcript);
+    })
+
+    //how to continue recording even after break? we create event end listener
+    recognition.addEventListener('end', recognition.start);
+
+    //trigger for the first time to infinite recording
+    recognition.start();
 
 
-</script>
+
+
+
+
+
+
+
+  </script>
 
 
   <style>
@@ -22,24 +81,25 @@
     }
 
     body {
-      background:#ffc600;
-      font-family: 'helvetica neue';
+      background: #ffc600;
+      font-family: 'Avenir Next', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       font-weight: 200;
       font-size: 20px;
     }
 
     .words {
-      max-width:500px;
-      margin:50px auto;
-      background:white;
-      border-radius:5px;
-      box-shadow:10px 10px 0 rgba(0,0,0,0.1);
-      padding:1rem 2rem 1rem 5rem;
+      max-width: 500px;
+      margin: 50px auto;
+      background: white;
+      border-radius: 5px;
+      box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+      padding: 1rem 2rem 1rem 5rem;
       background: -webkit-gradient(linear, 0 0, 0 100%, from(#d9eaf3), color-stop(4%, #fff)) 0 4px;
       background-size: 100% 3rem;
       position: relative;
-      line-height:3rem;
+      line-height: 3rem;
     }
+
     p {
       margin: 0 0 3rem;
     }
@@ -57,4 +117,5 @@
   </style>
 
 </body>
+
 </html>
