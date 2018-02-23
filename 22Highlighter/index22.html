@@ -60,8 +60,8 @@
     document.body.appendChild(highlight);
 
     function highlightLink() {
+      //this method to get information about current target which is triggers items , width , height , etc
       const coords = this.getBoundingClientRect();
-      console.log(coords);
 
       //create an object with property to access later
       const fixedCoords = {
@@ -77,6 +77,7 @@
       highlight.style.transform = `translate(${fixedCoords.left}px,${fixedCoords.top}px)`;
     }
 
+    //add event listener when mouse entering each elements inside triggers
     triggers.forEach(a => a.addEventListener('mouseenter', highlightLink))
 
   </script>
