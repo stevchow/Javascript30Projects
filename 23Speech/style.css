@@ -77,7 +77,6 @@ input[type="select"] {
 .voiceinator button {
   background:#ffc600;
   border:0;
-  width: 49%;
   float:left;
   font-family: 'Pacifico', cursive;
   margin-bottom: 0;
@@ -85,12 +84,15 @@ input[type="select"] {
   border-bottom: 5px solid #F3C010;
   cursor:pointer;
   position: relative;
+  margin: 10px;
 }
 
 .voiceinator button:active {
   top:2px;
 }
 
-.voiceinator button:nth-of-type(1) {
-  margin-right: 2%;
+
+
+.buttons {
+  display: flex;
 }
