@@ -2,7 +2,7 @@ html {
   box-sizing: border-box;
   background:#eeeeee;
   font-family:'helvetica neue';
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: 200;
 }
 body {
@@ -19,13 +19,17 @@ body {
   padding:40px;
   text-align: justify;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
-  transform: scale(0.98);
+  transform: scale(0.99);
   transition: transform 0.5s;
+}
+
+.fixed-nav .site-wrap {
+  transform: scale(1.1);
 }
 
 header {
   text-align: center;
-  height:50vh;
+  height:100vh;
   background:url(http://wes.io/iEgP/wow-so-deep.jpg) bottom center no-repeat;
   background-size:cover;
   display:flex;
@@ -34,9 +38,17 @@ header {
 }
 
 h1 {
-  color:white;
-  font-size: 7vw;
-  text-shadow: 3px 4px 0 rgba(0,0,0,0.2)
+  color:rgba(59, 104, 117, 0.904);
+  font-size: 5vw;
+  text-shadow: 3px 4px 0 rgba(194, 194, 194, 0.274);
+  transition:all 0.5s;
+}
+
+@media(min-width: 1000px){
+  h1 {
+    color: whitesmoke;
+    transition:all 0.5s;
+  }
 }
 
 nav {
@@ -46,6 +58,11 @@ nav {
   transition:all 0.5s;
   position: relative;
   z-index: 1;
+}
+
+.fixed-nav nav {
+  position: fixed;
+  box-shadow: 0 5px rgba(0, 0, 0, 0.05);
 }
 
 nav ul {
@@ -67,9 +84,14 @@ li.logo {
   max-width:0;
   overflow: hidden;
   background: white;
-  transition: all .5s;
+  transition: all 0.5s;
   font-weight: 600;
   font-size: 30px;
+}
+
+.fixed-nav li.logo {
+  /* you can use max-width with animation, not width */
+  max-width: 100px;
 }
 
 li.logo a {
