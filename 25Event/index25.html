@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding JavaScript's Capture in Console 💻</title>
+</head>
+
+<body class="bod">
+
+  <div class="one">
+    <div class="two">
+      <div class="three">
+      </div>
+    </div>
+  </div>
+
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    div {
+      width: 100%;
+      padding: 100px;
+    }
+
+    .one {
+      background: coral;
+    }
+
+    .two {
+      background: mistyrose;
+    }
+
+    .three {
+      background: #BADA55;
+    }
+
+    .btn {
+      background-color: rgba(42, 185, 161, 0.356);
+      padding: 10px;
+      border-style: none;
+      cursor: pointer;
+    }
+
+    .btn--checkout {
+      color: rgb(255, 105, 135);
+      font-weight: 700;
+      box-shadow: 3px 6px 1px rgba(107, 68, 9, 0.63);
+    }
+
+    .btn--checkout:active {
+      box-shadow: 0px 2px 9px rgba(107, 68, 9, 0.63);
+      transform: translateX(3px) translateY(3px);
+      transition: all 0.135s;
+    }
+  </style>
+
+  <button class="btn btn--checkout">CHECKOUT</button>
+  <script>
+    const divs = document.querySelectorAll('div');
+    const btn = document.querySelector('.btn');
+
+    function logText(e) {
+      // console.log(this.classList.value);
+      console.log(this);
+      e.stopPropagation(); //stop bubbling
+    }
+
+    //document.body.addEventListener('click', logText);
+
+    //capture true mean to triggered event from outer div until inner div
+    //once to true equal to removeEventListener, only triggered one time, like checkout button.
+    divs.forEach(div => div.addEventListener('click', logText, { capture: false, once: true }));
+
+    btn.addEventListener('click', () => {
+      alert('Your Transaction being process, (only one time alert-without removeEventListener)')
+    }, { once: true })
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
