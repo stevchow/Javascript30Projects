@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  background: url('https://source.unsplash.com/NFs6dRTBgaM/2000x2000') fixed;
+  background: url('https://source.unsplash.com/random/1000x1000') fixed;
   background-size: cover;
 }
 
@@ -56,15 +56,15 @@ body {
   box-shadow: inset 0 0 0 10px rgba(0,0,0,0.15);
 }
 
-.item:nth-child(9n+1) { background: dodgerblue;}
-.item:nth-child(9n+2) { background: goldenrod;}
-.item:nth-child(9n+3) { background: paleturquoise;}
-.item:nth-child(9n+4) { background: gold;}
-.item:nth-child(9n+5) { background: cadetblue;}
-.item:nth-child(9n+6) { background: tomato;}
-.item:nth-child(9n+7) { background: lightcoral;}
-.item:nth-child(9n+8) { background: darkslateblue;}
-.item:nth-child(9n+9) { background: rebeccapurple;}
+.item:nth-child(9n+1) { background: rgba(223, 51, 172, 0.856);}
+.item:nth-child(9n+2) { background: rgba(221, 176, 63, 0.856);}
+.item:nth-child(9n+3) { background: rgba(98, 192, 192, 0.884);}
+.item:nth-child(9n+4) { background: rgba(91, 248, 188, 0.883);}
+.item:nth-child(9n+5) { background: rgba(160, 92, 216, 0.856);}
+.item:nth-child(9n+6) { background: rgba(136, 250, 42, 0.815);}
+.item:nth-child(9n+7) { background: rgba(160, 35, 35, 0.89);}
+.item:nth-child(9n+8) { background: rgba(134, 178, 235, 0.87);}
+.item:nth-child(9n+9) { background: rgba(202, 102, 20, 0.815);}
 
 .item:nth-child(even) { transform: scaleX(1.31) rotateY(40deg); }
 .item:nth-child(odd) { transform: scaleX(1.31) rotateY(-40deg); }
