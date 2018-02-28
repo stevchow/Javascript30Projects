@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Scroll me or Drag me 📜</title>
+  <title>Click and Drag me 📜</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -36,11 +36,19 @@
     <div class="item item25">⚡💥</div>
   </div>
 
+  <button class="scrollUp" style="display:flex;">Scroll Up</button>
+
   <script>
     const slider = document.querySelector('.items');
+    const itemCard = document.querySelectorAll('.item');
+    const scrollUp = document.querySelector('.scrollUp');
     let isDown = false;
     let startX;
     let scrollLeft;
+
+    scrollUp.addEventListener('click', () => {
+      itemCard.forEach(item => item.classList.toggle('opened'));
+    });
 
     slider.addEventListener('mousedown', (e) => {
       isDown = true;
