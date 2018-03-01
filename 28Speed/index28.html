@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Video Speed Scrubber</title>
+  <title>Video SpeedUp</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <div class="wrapper">
@@ -14,7 +16,20 @@
     </div>
   </div>
 
-<script>
-</script>
+  <script>
+    const video = document.querySelector('.flex');
+    const speed = document.querySelector('.speed');
+    const bar = document.querySelector('.speed-bar');
+
+    speed.addEventListener('mousemove', function (e) {
+      const y = e.pageY - this.offsetTop; // this.offsetTop to create new 0 point base on our div
+      const percent = y / this.offsetHeight; //offsetHeight is div height, 410.
+
+
+      console.log(percent);
+    });
+
+  </script>
 </body>
+
 </html>
