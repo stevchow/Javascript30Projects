@@ -21,13 +21,20 @@
     const speed = document.querySelector('.speed');
     const bar = document.querySelector('.speed-bar');
 
-    speed.addEventListener('mousemove', function (e) {
+    function handlePlayback(e) {
       const y = e.pageY - this.offsetTop; // this.offsetTop to create new 0 point base on our div
       const percent = y / this.offsetHeight; //offsetHeight is div height, 410.
+      const min = 0.4; //setting minumum videoplayback rate
+      const max = 4; // setting maximum rate
+      const height = `${Math.round(percent * 100)}%`;
+      const playbackRate = percent * (max - min) + min; //applying min and max
 
+      bar.style.height = height;
+      bar.textContent = playbackRate.toFixed(1);
+      video.playbackRate = playbackRate;
+    }
 
-      console.log(percent);
-    });
+    speed.addEventListener('mousemove', handlePlayback);
 
   </script>
 </body>

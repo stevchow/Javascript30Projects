@@ -28,7 +28,7 @@ video {
 }
 .speed-bar {
   width:100%;
-  background:linear-gradient(-170deg, #3ec59d 0%, #e69160 100%);
+  background:linear-gradient(-170deg, #473ec5 0%, #be1affc2 100%);
   text-shadow:1px 1px 0 rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
