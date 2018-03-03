@@ -1,7 +1,7 @@
 html {
   box-sizing: border-box;
   font-size: 10px;
-  background: #ffc600;
+  background: #50ac1a83;
 }
 
 *, *:before, *:after {
@@ -26,6 +26,17 @@ h1 {
   padding:0 3rem;
   line-height:1;
   border-radius:1rem;
+}
+
+#custom {
+  text-align: center;
+}
+
+.start {
+  position: relative;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .game {
